@@ -1,0 +1,37 @@
+using System;
+using System.Data;
+
+namespace Task16_Calculator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 16. Калькулятор выражений";
+            
+            Console.WriteLine("Введите математическое выражение (например, 2+3*4):");
+            Console.Write("> ");
+            string expression = Console.ReadLine();
+            
+            try
+            {
+                var result = EvaluateExpression(expression);
+                Console.WriteLine($"{expression} = {result}");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Ошибка при вычислении выражения");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+        
+        static double EvaluateExpression(string expression)
+        {
+            var table = new DataTable();
+            var result = table.Compute(expression, "");
+            return Convert.ToDouble(result);
+        }
+    }
+}
