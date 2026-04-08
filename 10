@@ -1,0 +1,44 @@
+using System;
+using System.IO;
+
+namespace Task10_SearchWord
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 10. Поиск слова в файле";
+            
+            string filePath = "text.txt";
+            
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("Создаю файл text.txt с примером содержимого...");
+                string sampleContent = "Hello world this is a sample text file. Hello again. World is beautiful.";
+                File.WriteAllText(filePath, sampleContent);
+            }
+            
+            Console.Write("Введите слово для поиска: ");
+            string searchWord = Console.ReadLine();
+            
+            string content = File.ReadAllText(filePath);
+            string[] words = content.Split(new char[] { ' ', '.', ',', '!', '?', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            int count = 0;
+            foreach (string word in words)
+            {
+                if (string.Equals(word, searchWord, StringComparison.OrdinalIgnoreCase))
+                {
+                    count++;
+                }
+            }
+            
+            Console.WriteLine($"\nСодержимое файла:");
+            Console.WriteLine(content);
+            Console.WriteLine($"\nСлово '{searchWord}' встречается {count} раз(а)");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
