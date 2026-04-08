@@ -1,0 +1,34 @@
+using System;
+using System.IO;
+
+namespace Task9_ReadFile
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 9. Чтение файла";
+            
+            string filePath = "input.txt";
+            
+            if (File.Exists(filePath))
+            {
+                string content = File.ReadAllText(filePath);
+                Console.WriteLine("Содержимое файла input.txt:");
+                Console.WriteLine(content);
+            }
+            else
+            {
+                Console.WriteLine("Файл input.txt не существует");
+                Console.WriteLine("Создаю файл с примером содержимого...");
+                
+                string sampleContent = "Пример текста для чтения.\nВторая строка файла.";
+                File.WriteAllText(filePath, sampleContent);
+                Console.WriteLine("Файл создан. Запустите программу снова.");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
