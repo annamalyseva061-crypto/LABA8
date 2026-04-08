@@ -1,0 +1,60 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+
+namespace Task15_FilterFile
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 15. Фильтрация строк файла";
+            
+            string inputFile = "data.txt";
+            string outputFile = "filtered.txt";
+            
+            if (!File.Exists(inputFile))
+            {
+                Console.WriteLine("Создаю файл data.txt с примером содержимого...");
+                string[] sampleLines = {
+                    "Short",
+                    "This is a long line",
+                    "Hi",
+                    "Another long line here",
+                    "Bye",
+                    "Medium line",
+                    "End"
+                };
+                File.WriteAllLines(inputFile, sampleLines);
+            }
+            
+            string[] lines = File.ReadAllLines(inputFile);
+            List<string> filtered = new List<string>();
+            
+            foreach (string line in lines)
+            {
+                if (line.Length >= 5)
+                {
+                    filtered.Add(line);
+                }
+            }
+            
+            File.WriteAllLines(outputFile, filtered);
+            
+            Console.WriteLine($"Исходный файл {inputFile}:");
+            foreach (string line in lines)
+            {
+                Console.WriteLine($"  {line} (длина: {line.Length})");
+            }
+            
+            Console.WriteLine($"\nОтфильтрованный файл {outputFile} (строки длиной >= 5):");
+            foreach (string line in filtered)
+            {
+                Console.WriteLine($"  {line}");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
