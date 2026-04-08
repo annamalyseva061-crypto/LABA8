@@ -1,0 +1,25 @@
+using System;
+
+namespace Task5_ReverseString
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 5. Переворот строки";
+            
+            Console.Write("Введите строку: ");
+            string input = Console.ReadLine();
+            
+            char[] chars = input.ToCharArray();
+            Array.Reverse(chars);
+            string reversed = new string(chars);
+            
+            Console.WriteLine($"Исходная строка: {input}");
+            Console.WriteLine($"Перевернутая строка: {reversed}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
