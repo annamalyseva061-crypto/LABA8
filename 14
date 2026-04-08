@@ -1,0 +1,43 @@
+using System;
+using System.IO;
+
+namespace Task14_FileStatistics
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 14. Статистика файла";
+            
+            string filePath = "book.txt";
+            
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("Создаю файл book.txt с примером содержимого...");
+                string sampleContent = "Hello world!\nThis is a sample text file.\nIt has multiple lines.\nC# is awesome!";
+                File.WriteAllText(filePath, sampleContent);
+            }
+            
+            string content = File.ReadAllText(filePath);
+            string[] lines = File.ReadAllLines(filePath);
+            
+            int charCount = content.Length;
+            int wordCount = 0;
+            int lineCount = lines.Length;
+            
+            string[] words = content.Split(new char[] { ' ', '\n', '\r', '\t', '.', ',', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
+            wordCount = words.Length;
+            
+            Console.WriteLine($"Файл: {filePath}");
+            Console.WriteLine($"Содержимое:");
+            Console.WriteLine(content);
+            Console.WriteLine($"\nСтатистика:");
+            Console.WriteLine($"Количество символов: {charCount}");
+            Console.WriteLine($"Количество слов: {wordCount}");
+            Console.WriteLine($"Количество строк: {lineCount}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
