@@ -1,0 +1,23 @@
+using System;
+
+namespace Task3_CharCode
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 3. Вывод кода символа";
+            
+            Console.Write("Введите символ: ");
+            char ch = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            
+            int code = (int)ch;
+            Console.WriteLine($"Символ '{ch}' имеет код {code} (десятичный)");
+            Console.WriteLine($"В шестнадцатеричной системе: {code:X}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
