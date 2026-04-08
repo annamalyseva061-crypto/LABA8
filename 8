@@ -1,0 +1,29 @@
+using System;
+
+namespace Task8_ReplaceSubstring
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 8. Замена подстроки";
+            
+            Console.Write("Введите строку: ");
+            string input = Console.ReadLine();
+            
+            Console.Write("Что заменить: ");
+            string oldValue = Console.ReadLine();
+            
+            Console.Write("На что заменить: ");
+            string newValue = Console.ReadLine();
+            
+            string result = input.Replace(oldValue, newValue);
+            
+            Console.WriteLine($"\nИсходная строка: {input}");
+            Console.WriteLine($"Результат: {result}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
