@@ -1,0 +1,48 @@
+using System;
+using System.IO;
+
+namespace Task11_EncryptFile
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 11. Шифрование файла";
+            
+            string inputFile = "secret.txt";
+            string outputFile = "encrypted.txt";
+            
+            if (!File.Exists(inputFile))
+            {
+                Console.WriteLine("Создаю файл secret.txt с примером содержимого...");
+                string sampleContent = "This is a secret message. Do not share!";
+                File.WriteAllText(inputFile, sampleContent);
+            }
+            
+            string content = File.ReadAllText(inputFile);
+            char[] encrypted = new char[content.Length];
+            
+            for (int i = 0; i < content.Length; i++)
+            {
+                if (char.IsLetter(content[i]))
+                {
+                    encrypted[i] = '*';
+                }
+                else
+                {
+                    encrypted[i] = content[i];
+                }
+            }
+            
+            File.WriteAllText(outputFile, new string(encrypted));
+            
+            Console.WriteLine($"Исходный файл {inputFile}:");
+            Console.WriteLine(content);
+            Console.WriteLine($"\nЗашифрованный файл {outputFile}:");
+            Console.WriteLine(new string(encrypted));
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
