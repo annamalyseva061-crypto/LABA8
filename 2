@@ -1,0 +1,35 @@
+using System;
+
+namespace Task2_ChangeCase
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 2. Преобразование регистра";
+            
+            Console.Write("Введите букву: ");
+            char ch = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            
+            if (char.IsLetter(ch))
+            {
+                if (char.IsLower(ch))
+                {
+                    Console.WriteLine($"'{ch}' → '{char.ToUpper(ch)}'");
+                }
+                else
+                {
+                    Console.WriteLine($"'{ch}' → '{char.ToLower(ch)}'");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: введен не буквенный символ");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
