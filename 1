@@ -1,0 +1,32 @@
+using System;
+
+namespace Task1_CharType
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 1. Определение типа символа";
+            
+            Console.Write("Введите символ: ");
+            char ch = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            
+            if (char.IsDigit(ch))
+            {
+                Console.WriteLine($"Символ '{ch}' - цифра");
+            }
+            else if (char.IsLetter(ch))
+            {
+                Console.WriteLine($"Символ '{ch}' - буква");
+            }
+            else
+            {
+                Console.WriteLine($"Символ '{ch}' - спецсимвол");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
