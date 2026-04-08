@@ -1,0 +1,30 @@
+using System;
+
+namespace Task7_RemoveDigits
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 7. Удаление цифр";
+            
+            Console.Write("Введите строку с цифрами: ");
+            string input = Console.ReadLine();
+            
+            string result = "";
+            foreach (char ch in input)
+            {
+                if (!char.IsDigit(ch))
+                {
+                    result += ch;
+                }
+            }
+            
+            Console.WriteLine($"Исходная строка: {input}");
+            Console.WriteLine($"Строка без цифр: {result}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
