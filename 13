@@ -1,0 +1,52 @@
+using System;
+using System.Text;
+
+namespace Task13_RandomPassword
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 13. Генерация пароля";
+            
+            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string lowercase = "abcdefghijklmnopqrstuvwxyz";
+            string digits = "0123456789";
+            
+            string allChars = uppercase + lowercase + digits;
+            
+            Random rnd = new Random();
+            StringBuilder password = new StringBuilder();
+            
+            password.Append(uppercase[rnd.Next(uppercase.Length)]);
+            password.Append(lowercase[rnd.Next(lowercase.Length)]);
+            password.Append(digits[rnd.Next(digits.Length)]);
+            
+            for (int i = 3; i < 8; i++)
+            {
+                password.Append(allChars[rnd.Next(allChars.Length)]);
+            }
+            
+            string shuffled = Shuffle(password.ToString(), rnd);
+            
+            Console.WriteLine($"Сгенерированный пароль: {shuffled}");
+            Console.WriteLine($"Длина пароля: {shuffled.Length}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+        
+        static string Shuffle(string str, Random rnd)
+        {
+            char[] array = str.ToCharArray();
+            for (int i = array.Length - 1; i > 0; i--)
+            {
+                int j = rnd.Next(i + 1);
+                char temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return new string(array);
+        }
+    }
+}
