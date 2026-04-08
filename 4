@@ -1,0 +1,37 @@
+using System;
+
+namespace Task4_IsVowel
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 4. Проверка гласной буквы";
+            
+            Console.Write("Введите букву: ");
+            char ch = char.ToLower(Console.ReadKey().KeyChar);
+            Console.WriteLine();
+            
+            if (char.IsLetter(ch))
+            {
+                bool isVowel = ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'y';
+                
+                if (isVowel)
+                {
+                    Console.WriteLine($"Буква '{ch}' - гласная");
+                }
+                else
+                {
+                    Console.WriteLine($"Буква '{ch}' - согласная");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: введен не буквенный символ");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
