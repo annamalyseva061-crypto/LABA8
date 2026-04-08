@@ -1,0 +1,43 @@
+using System;
+using System.IO;
+
+namespace Task12_MergeFiles
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Title = "Задание 12. Объединение файлов";
+            
+            string file1 = "file1.txt";
+            string file2 = "file2.txt";
+            string resultFile = "result.txt";
+            
+            if (!File.Exists(file1))
+            {
+                File.WriteAllText(file1, "Содержимое первого файла.\nСтрока 2 файла 1.");
+            }
+            
+            if (!File.Exists(file2))
+            {
+                File.WriteAllText(file2, "Содержимое второго файла.\nСтрока 2 файла 2.");
+            }
+            
+            string content1 = File.ReadAllText(file1);
+            string content2 = File.ReadAllText(file2);
+            
+            string merged = content1 + "\n" + content2;
+            File.WriteAllText(resultFile, merged);
+            
+            Console.WriteLine($"Содержимое {file1}:");
+            Console.WriteLine(content1);
+            Console.WriteLine($"\nСодержимое {file2}:");
+            Console.WriteLine(content2);
+            Console.WriteLine($"\nРезультат объединения в {resultFile}:");
+            Console.WriteLine(merged);
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
